@@ -21,12 +21,12 @@ return {
     showbreak = "↪ ",
     -- wrap = true, -- sets vim.opt.wrap
     -- colorcolumn = "89",
-    cmdheight = 0,
+    cmdheight = 1,
     rnu = true,
     scrolloff = 8,
     clipboard = "unnamedplus",
     sidescrolloff = 8,
-    showmode = true,
+    -- showmode = true,
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
