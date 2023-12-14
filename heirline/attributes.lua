@@ -1,5 +1,3 @@
 return {
-  attributes = {
-    mode = { bold = true },
-  },
+  mode = { bold = true },
 }
