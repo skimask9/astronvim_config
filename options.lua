@@ -7,6 +7,26 @@ return {
     spell = false, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
     wrap = false, -- sets vim.opt.wrap
+    linebreak = true, -- linebreak soft wrap at words
+    list = true, -- show whitespace characters
+    listchars = {
+      tab = "|→",
+      extends = "⟩",
+      precedes = "⟨",
+      trail = "·",
+      nbsp = "␣",
+      eol = "↵",
+    },
+    -- showtabline = 0,
+    showbreak = "↪ ",
+    -- wrap = true, -- sets vim.opt.wrap
+    -- colorcolumn = "89",
+    cmdheight = 0,
+    rnu = true,
+    scrolloff = 8,
+    clipboard = "unnamedplus",
+    sidescrolloff = 8,
+    showmode = true,
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
