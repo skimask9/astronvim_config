@@ -1,7 +1,5 @@
 return {
-  icon_highlights = {
-    file_icon = {
-      statusline = false,
-    },
+  file_icon = {
+    statusline = false,
   },
 }
