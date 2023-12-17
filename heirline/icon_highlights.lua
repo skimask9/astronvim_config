@@ -1,5 +1,6 @@
 return {
   file_icon = {
-    statusline = false,
+    statusline = true,
+    winbar = true,
   },
 }

@@ -46,6 +46,10 @@
       },
       {
         "language": "python",
+        "path": "./django-best-practice_htmx/django_best.json"
+      },
+      {
+        "language": "python",
         "path": "./viewsdrf/imports.json"
       },
       {

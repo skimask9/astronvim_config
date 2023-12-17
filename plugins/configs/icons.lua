@@ -12,7 +12,7 @@ return {
     Event = "",
     Field = "",
     File = "",
-    Folder = "",
+    Folder = "",
     Function = "",
     Interface = "",
     Key = "",

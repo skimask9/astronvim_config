@@ -17,15 +17,15 @@ return {
       nbsp = "␣",
       eol = "↵",
     },
-    -- showtabline = 0,
     showbreak = "↪ ",
     -- wrap = true, -- sets vim.opt.wrap
     -- colorcolumn = "89",
-    cmdheight = 1,
+    cmdheight = 0,
     rnu = true,
     scrolloff = 8,
     clipboard = "unnamedplus",
     sidescrolloff = 8,
+    -- inlay_hints_enabled = true,
     -- showmode = true,
   },
   g = {

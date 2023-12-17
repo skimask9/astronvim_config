@@ -10,7 +10,6 @@ return {
   --   end,
   -- },
   { "Vimjas/vim-python-pep8-indent", ft = "python" },
-  { "pabloariasal/webify.nvim", cmd = "OpenFileInRepo" },
   {
     "AlexvZyl/nordic.nvim",
     config = function()

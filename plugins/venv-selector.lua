@@ -3,8 +3,11 @@ return {
   dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
   opts = {
     -- Your options go here
-    name = ".venv",
-    parents = 1,
+    name = { "venv", ".venv" },
+    -- search_workspace = true,
+    -- path = "./.venv/",
+    parents = 0,
+    -- search = true,
     -- auto_refresh = false
   },
   event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
