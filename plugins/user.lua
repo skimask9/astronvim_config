@@ -78,17 +78,4 @@ return {
       }
     end,
   },
-
-  -- {
-  --   "linux-cultist/venv-selector.nvim",
-  --   config = function()
-  --     require("venv-selector").setup {
-  --       dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
-  --       config = true,
-  --       event = "VeryLazy", --
-  --       name = ".venv",
-  --       parents = 1,
-  --     }
-  --   end,
-  -- },
 }

@@ -70,9 +70,9 @@ return {
         -- file_icon = { padding = { left = 0 } },
         filename = { fallback = "Empty" },
         -- add padding
-        -- padding = { right = 1 },
+        padding = { right = 1 },
         -- define the section separator
-        -- surround = { separator = "left", condition = false },
+        surround = { separator = "left", condition = false },
       },
       -- add a component for the current git branch if it exists and use no separator for the sections
       status.component.git_branch { surround = { separator = "none", color = "git_branch_bg" } },
@@ -80,6 +80,7 @@ return {
       status.component.git_diff { padding = { left = 0 }, surround = { separator = "none", color = "git_branch_bg" } },
       status.component.harpoon_index,
       status.component.venv,
+
       -- fill the rest of the statusline
       -- the elements after this will appear in the middle of the statusline
       status.component.fill(),
@@ -96,7 +97,7 @@ return {
         },
       },
       -- add a component to display LSP clients, disable showing LSP progress, and use the right separator
-      status.component.lsp { lsp_progress = false, surround = { separator = "right" }, padding = { right = 1 } },
+      status.component.lsp { lsp_progress = false, surround = { separator = "none" }, padding = { right = 1 } },
       -- NvChad has some nice icons to go along with information, so we can create a parent component to do this
       -- all of the children of this table will be treated together as a single component
       {
