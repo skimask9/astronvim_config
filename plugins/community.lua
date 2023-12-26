@@ -12,6 +12,7 @@ return {
   { import = "astrocommunity.colorscheme.poimandres-nvim" },
   { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
+  { import = "astrocommunity.editing-support.vim-move" },
   -- NOTE: nvim 0.10+
   -- { import = "astrocommunity.bars-and-lines.dropbar-nvim" },
   -- NOTE: nvim 0.10+
@@ -72,7 +73,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent = true, -- Enable this to disable setting the background color
+      transparent = false, -- Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal`
       styles = {
         -- Style to be applied to different syntax groups
