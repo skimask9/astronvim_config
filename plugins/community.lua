@@ -10,7 +10,7 @@ return {
   { import = "astrocommunity.colorscheme.github-nvim-theme" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   { import = "astrocommunity.colorscheme.poimandres-nvim" },
-  { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
+  -- { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
   { import = "astrocommunity.editing-support.vim-move" },
   -- NOTE: nvim 0.10+
@@ -35,30 +35,50 @@ return {
   -- { import = "astrocommunity.utillity.noice-nvim" },
   -- { import = "astrocommunity.recipes.telescope-nvchad-theme" },
   -- NOTE: astro v4
-  {
-    "rebelot/kanagawa.nvim",
-    opts = {
-      compile = false, -- enable compiling the colorscheme
-      undercurl = true, -- enable undercurls
-      commentStyle = { italic = true },
-      functionStyle = { italic = true },
-      keywordStyle = { bold = true },
-      statementStyle = { bold = true },
-      typeStyle = {},
-      transparent = false, -- do not set background color
-      dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-      terminalColors = true,
-      colors = {
-        theme = {
-          all = {
-            ui = {
-              bg_gutter = "none",
-            },
-          },
-        },
-      },
-    },
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   priority = 1000,
+  --   opts = {
+  --     styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+  --       comments = { "italic" }, -- Change the style of comments
+  --       conditionals = { "italic" },
+  --       loops = { "bold" },
+  --       functions = { "italic" },
+  --       keywords = { "bold" },
+  --       strings = {},
+  --       variables = {},
+  --       numbers = {},
+  --       booleans = { "bold" },
+  --       properties = {},
+  --       types = { "italic" },
+  --       operators = {},
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   opts = {
+  --     compile = false, -- enable compiling the colorscheme
+  --     undercurl = true, -- enable undercurls
+  --     commentStyle = { italic = true },
+  --     functionStyle = { italic = true },
+  --     keywordStyle = { bold = true },
+  --     statementStyle = { bold = true },
+  --     typeStyle = {},
+  --     transparent = false, -- do not set background color
+  --     dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+  --     terminalColors = true,
+  --     colors = {
+  --       theme = {
+  --         all = {
+  --           ui = {
+  --             bg_gutter = "none",
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
   {
     "m4xshen/smartcolumn.nvim",
     opts = {
