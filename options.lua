@@ -7,24 +7,27 @@ return {
     spell = false, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
     wrap = false, -- sets vim.opt.wrap
-    -- linebreak = true, -- linebreak soft wrap at words
-    -- list = true, -- show whitespace characters
-    -- listchars = {
-    --   tab = "|→",
-    --   extends = "⟩",
-    --   precedes = "⟨",
-    --   trail = "·",
-    --   nbsp = "␣",
-    --   eol = "↵",
-    -- },
-    -- showbreak = "↪ ",
+    linebreak = true, -- linebreak soft wrap at words
+    list = true, -- show whitespace characters
+    listchars = {
+      tab = "|→",
+      extends = "⟩",
+      precedes = "⟨",
+      trail = "·",
+      nbsp = "␣",
+      eol = "↵",
+    },
+    showbreak = "↪ ",
     -- wrap = true, -- sets vim.opt.wrap
-    -- colorcolumn = "89",
+    colorcolumn = "89",
     cmdheight = 0,
     rnu = true,
     scrolloff = 8,
     clipboard = "unnamedplus",
     sidescrolloff = 8,
+    guicursor = "n-v-c-sm:block-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,i-ci-ve:ver50",
+    -- guicursor = "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+    -- guicursor = "",
     -- inlay_hints_enabled = true,
     -- showmode = true,
   },

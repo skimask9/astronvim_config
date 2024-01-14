@@ -6,10 +6,9 @@ return {
 
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
   -- { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.colorscheme.gruvbox-baby" },
-  { import = "astrocommunity.colorscheme.github-nvim-theme" },
+  { import = "astrocommunity.colorscheme.neosolarized-nvim" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
-  { import = "astrocommunity.colorscheme.poimandres-nvim" },
+  -- { import = "astrocommunity.colorscheme.nordic-nvim" },
   -- { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
   { import = "astrocommunity.editing-support.vim-move" },
@@ -17,6 +16,7 @@ return {
   -- { import = "astrocommunity.bars-and-lines.dropbar-nvim" },
   -- NOTE: nvim 0.10+
   { import = "astrocommunity.pack.tailwindcss" },
+  { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.json" },
@@ -80,6 +80,54 @@ return {
   --   },
   -- },
   {
+    "AlexvZyl/nordic.nvim",
+    opts = {
+      -- This callback can be used to override the colors used in the palette.
+      on_palette = function(palette) return palette end,
+      -- Enable bold keywords.
+      bold_keywords = true,
+      -- Enable italic comments.
+      italic_comments = true,
+      -- Enable general editor background transparency.
+      transparent_bg = false,
+      -- Enable brighter float border.
+      bright_border = false,
+      -- Reduce the overall amount of blue in the theme (diverges from base Nord).
+      reduced_blue = true,
+      -- Swap the dark background with the normal one.
+      swap_backgrounds = false,
+      -- Override the styling of any highlight group.
+      override = {},
+      -- Cursorline options.  Also includes visual/selection.
+      cursorline = {
+        -- Bold font in cursorline.
+        bold = false,
+        -- Bold cursorline number.
+        bold_number = true,
+        -- Avialable styles: 'dark', 'light'.
+        theme = "dark",
+        -- Blending the cursorline bg with the buffer bg.
+        blend = 0.9,
+      },
+      noice = {
+        -- Available styles: `classic`, `flat`.
+        style = "flat",
+      },
+      telescope = {
+        -- Available styles: `classic`, `flat`.
+        style = "flat",
+      },
+      leap = {
+        -- Dims the backdrop when using leap.
+        dim_backdrop = false,
+      },
+      ts_context = {
+        -- Enables dark background for treesitter-context window
+        dark_background = false,
+      },
+    },
+  },
+  {
     "m4xshen/smartcolumn.nvim",
     opts = {
       colorcolumn = "120",
@@ -101,7 +149,7 @@ return {
         comments = { italic = true },
         keywords = { bold = true },
         functions = { italic = true },
-        variables = {},
+        variables = { bold = true },
         -- Background styles. Can be "dark", "transparent" or "normal"
         sidebars = "transparent", -- style for sidebars, see below
         floats = "transparent", -- style for floating windows

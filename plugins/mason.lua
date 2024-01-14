@@ -39,41 +39,45 @@ return {
           }
           config.configurations = {
             {
-              -- The first three options are required by nvim-dap
-              type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+              type = "python",
               request = "launch",
               name = "Launch file",
-
-              -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-
-              program = "${file}", -- This configuration will launch the current file if used.
-              pythonPath = function()
-                -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-                -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-                -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-                local cwd = vim.fn.getcwd()
-                if vim.fn.executable(cwd .. "/venv/bin/python3") == 1 then
-                  return cwd .. "/venv/bin/python"
-                elseif vim.fn.executable(cwd .. "/.venv/bin/python3") == 1 then
-                  return cwd .. "/.venv/bin/python3"
-                else
-                  return "python3"
-                end
-              end,
+              program = "${file}",
+              pythonPath = "python",
+            },
+            {
+              type = "python",
+              request = "launch",
+              name = "Django",
+              program = vim.fn.getcwd() .. "/manage.py", -- NOTE: Adapt path to manage.py as needed
+              args = { "runserver" },
+              pythonPath = "python",
+              console = "integratedTerminal",
+            },
+            {
+              type = "python",
+              request = "launch",
+              name = "FastAPI",
+              program = vim.fn.getcwd() .. "/main.py",
+              pythonPath = "python",
+            },
+            {
+              type = "python",
+              request = "launch",
+              name = "FastAPI module",
+              module = "uvicorn",
+              args = {
+                "app:app",
+                "--use-colors",
+                -- "--reload", -- doesn't work
+              },
+              pythonPath = "python",
+              console = "integratedTerminal",
             },
           }
           require("mason-nvim-dap").default_setup(config) -- don't forget this!
         end,
       }
-    end,
-  },
-  {
-    "mfussenegger/nvim-dap-python",
-    dependencies = "mfussenegger/nvim-dap",
-    ft = "python", -- NOTE: ft: lazy-load on filetype
-    config = function(_, opts)
-      local path = require("mason-registry").get_package("debugpy"):get_install_path() .. "/venv/bin/python"
-      require("dap-python").setup(path, opts)
     end,
   },
 }
