@@ -24,10 +24,12 @@ return {
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
   { import = "astrocommunity.editing-support.telescope-undo-nvim" },
   { import = "astrocommunity.editing-support.multicursors-nvim" },
+  { import = "astrocommunity.editing-support.treesj" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   -- { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
   { import = "astrocommunity.git.git-blame-nvim" },
   { import = "astrocommunity.motion.harpoon" },
+  { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.color.tint-nvim" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
@@ -79,6 +81,12 @@ return {
   --     },
   --   },
   -- },
+  {
+    "Wansmer/treesj",
+    keys = { { "<leader>j", "<CMD>TSJToggle<CR>", desc = "Toggle Treesitter Join" } },
+    cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
+    opts = { use_default_keymaps = false },
+  },
   {
     "AlexvZyl/nordic.nvim",
     opts = {
