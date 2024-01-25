@@ -10,6 +10,7 @@ return {
         "lua_ls",
       })
     end,
+    inlay_hints = { enabled = true },
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
   {
@@ -52,6 +53,7 @@ return {
               program = vim.fn.getcwd() .. "/manage.py", -- NOTE: Adapt path to manage.py as needed
               args = { "runserver" },
               pythonPath = "python",
+              django = true,
               console = "integratedTerminal",
             },
             {

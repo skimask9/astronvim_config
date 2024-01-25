@@ -20,6 +20,7 @@ return {
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
   { import = "astrocommunity.editing-support.telescope-undo-nvim" },
@@ -31,7 +32,7 @@ return {
   { import = "astrocommunity.motion.harpoon" },
   { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.color.tint-nvim" },
-  { import = "astrocommunity.scrolling.neoscroll-nvim" },
+  -- { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
   -- NOTE: astro v4
   -- { import = "astrocommunity.utillity.noice-nvim" },
@@ -87,54 +88,54 @@ return {
     cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
     opts = { use_default_keymaps = false },
   },
-  {
-    "AlexvZyl/nordic.nvim",
-    opts = {
-      -- This callback can be used to override the colors used in the palette.
-      on_palette = function(palette) return palette end,
-      -- Enable bold keywords.
-      bold_keywords = true,
-      -- Enable italic comments.
-      italic_comments = true,
-      -- Enable general editor background transparency.
-      transparent_bg = false,
-      -- Enable brighter float border.
-      bright_border = false,
-      -- Reduce the overall amount of blue in the theme (diverges from base Nord).
-      reduced_blue = true,
-      -- Swap the dark background with the normal one.
-      swap_backgrounds = false,
-      -- Override the styling of any highlight group.
-      override = {},
-      -- Cursorline options.  Also includes visual/selection.
-      cursorline = {
-        -- Bold font in cursorline.
-        bold = false,
-        -- Bold cursorline number.
-        bold_number = true,
-        -- Avialable styles: 'dark', 'light'.
-        theme = "dark",
-        -- Blending the cursorline bg with the buffer bg.
-        blend = 0.9,
-      },
-      noice = {
-        -- Available styles: `classic`, `flat`.
-        style = "flat",
-      },
-      telescope = {
-        -- Available styles: `classic`, `flat`.
-        style = "flat",
-      },
-      leap = {
-        -- Dims the backdrop when using leap.
-        dim_backdrop = false,
-      },
-      ts_context = {
-        -- Enables dark background for treesitter-context window
-        dark_background = false,
-      },
-    },
-  },
+  -- {
+  --   "AlexvZyl/nordic.nvim",
+  --   opts = {
+  --     -- This callback can be used to override the colors used in the palette.
+  --     on_palette = function(palette) return palette end,
+  --     -- Enable bold keywords.
+  --     bold_keywords = true,
+  --     -- Enable italic comments.
+  --     italic_comments = true,
+  --     -- Enable general editor background transparency.
+  --     transparent_bg = false,
+  --     -- Enable brighter float border.
+  --     bright_border = false,
+  --     -- Reduce the overall amount of blue in the theme (diverges from base Nord).
+  --     reduced_blue = true,
+  --     -- Swap the dark background with the normal one.
+  --     swap_backgrounds = false,
+  --     -- Override the styling of any highlight group.
+  --     override = {},
+  --     -- Cursorline options.  Also includes visual/selection.
+  --     cursorline = {
+  --       -- Bold font in cursorline.
+  --       bold = false,
+  --       -- Bold cursorline number.
+  --       bold_number = true,
+  --       -- Avialable styles: 'dark', 'light'.
+  --       theme = "dark",
+  --       -- Blending the cursorline bg with the buffer bg.
+  --       blend = 0.9,
+  --     },
+  --     noice = {
+  --       -- Available styles: `classic`, `flat`.
+  --       style = "flat",
+  --     },
+  --     telescope = {
+  --       -- Available styles: `classic`, `flat`.
+  --       style = "flat",
+  --     },
+  --     leap = {
+  --       -- Dims the backdrop when using leap.
+  --       dim_backdrop = false,
+  --     },
+  --     ts_context = {
+  --       -- Enables dark background for treesitter-context window
+  --       dark_background = false,
+  --     },
+  --   },
+  -- },
   {
     "m4xshen/smartcolumn.nvim",
     opts = {
@@ -210,7 +211,7 @@ return {
       { "<C-p>", function() require("harpoon.ui").nav_prev() end, desc = "Goto previous mark" },
       { "<C-t>", function() require("harpoon.ui").nav_next() end, desc = "Goto next mark" },
       { "<C-q>", function() require("harpoon.ui").nav_file(1) end, desc = "Nav file 1" },
-      { "<C-w>", function() require("harpoon.ui").nav_file(2) end, desc = "Nav file 2" },
+      -- { "<C-w>", function() require("harpoon.ui").nav_file(2) end, desc = "Nav file 2" },
       { "<C-e>", function() require("harpoon.ui").nav_file(3) end, desc = "Nav file 3" },
       { "<C-f>", function() require("harpoon.ui").nav_file(4) end, desc = "Nav file 4" },
     },

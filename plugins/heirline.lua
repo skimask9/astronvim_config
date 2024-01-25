@@ -36,7 +36,18 @@ return {
       },
     }
 
+    -- opts.tabline = nil -- remove tabline
+    --
+    -- opts.statusline[1][3] = status.component.file_info {
+    --   filename = { modify = ":~:." }, -- relative path
+    -- }
+    --
+    -- opts.statusline[3][1] = nil -- disable file type section
+
+    opts.winbar = nil
+
     opts.statusline = {
+
       -- default highlight for the entire statusline
       hl = { fg = "fg" },
       -- each element following is a component in astronvim.utils.status module

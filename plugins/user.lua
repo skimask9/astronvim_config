@@ -10,4 +10,5 @@ return {
   --   end,
   -- },
   { "Vimjas/vim-python-pep8-indent", ft = "python" },
+  { "tweekmonster/django-plus.vim", ft = { "python", "html", "htmldjango" } },
 }
