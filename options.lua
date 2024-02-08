@@ -9,15 +9,15 @@ return {
     wrap = false, -- sets vim.opt.wrap
     linebreak = true, -- linebreak soft wrap at words
     list = true, -- show whitespace characters
-    listchars = {
-      tab = "|→",
-      extends = "⟩",
-      precedes = "⟨",
-      trail = "·",
-      nbsp = "␣",
-      eol = "↵",
-    },
-    showbreak = "↪ ",
+    -- listchars = {
+    --   tab = "|→",
+    --   extends = "⟩",
+    --   precedes = "⟨",
+    --   trail = "·",
+    --   nbsp = "␣",
+    --   eol = "↵",
+    -- },
+    -- showbreak = "↪ ",
     -- wrap = true, -- sets vim.opt.wrap
     colorcolumn = "89",
     cmdheight = 0,

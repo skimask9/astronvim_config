@@ -49,7 +49,7 @@ return {
     opts.statusline = {
 
       -- default highlight for the entire statusline
-      hl = { fg = "fg" },
+      hl = { fg = "fg", bg = "bg" },
       -- each element following is a component in astronvim.utils.status module
 
       -- add the vim mode component
@@ -96,9 +96,9 @@ return {
       -- fill the rest of the statusline
       -- the elements after this will appear in the middle of the statusline
       status.component.fill(),
-      status.component.cmd_info(),
+      -- status.component.cmd_info(),
       -- add a component to display if the LSP is loading, disable showing running client names, and use no separator
-      status.component.lsp { lsp_client_names = false, surround = { separator = "none" } },
+      -- status.component.lsp { lsp_client_names = false, surround = { separator = "none" } },
       -- fill the rest of the statusline
       -- the elements after this will appear on the right of the statusline
       status.component.fill(),

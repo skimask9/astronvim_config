@@ -18,7 +18,8 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "tokyonight-night",
+  colorscheme = "solarized-osaka",
+  -- colorscheme = "tokyonight-night",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
@@ -26,10 +27,20 @@ return {
   },
 
   lsp = {
+    vim.filetype.add { extension = { templ = "templ" } },
     -- customize lsp formatting options
     -- features = {
     --   inlay_hints = true,
     -- },
+    config = {
+      htmx = {
+        filetypes = { "html", "templ", "htmldjango", "djlint" },
+      },
+      -- templ = {
+      --   filetypes = { "html" },
+      -- },
+    },
+
     formatting = {
       -- control auto formatting on save
       format_on_save = {
@@ -77,6 +88,7 @@ return {
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
     -- Set up custom filetypes
+
     -- vim.filetype.add {
     --   extension = {
     --     foo = "fooscript",
