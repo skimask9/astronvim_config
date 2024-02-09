@@ -1,6 +1,7 @@
 return {
   -- VimIcon = "",
-  VimIcon = "",
+  -- VimIcon = "",
+  VimIcon = "",
   ScrollText = "",
   GitBranch = "",
   GitAdd = "",

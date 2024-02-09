@@ -23,7 +23,7 @@ return {
           return
         end
       end,
-      hl = { fg = "git_branch_fg" },
+      hl = { fg = "git_branch_fg", bg = "bg" },
     }
     status.component.venv = {
       { provider = function() return " 🐍" .. actived_venv() end },
@@ -33,10 +33,42 @@ return {
       },
       hl = {
         fg = "git_branch_fg",
+        -- bg = "bg",
       },
     }
 
-    -- opts.tabline = nil -- remove tabline
+    opts.tabline = { -- tabline
+      status.component.harpoon_index,
+      { -- file tree padding
+        condition = function(self)
+          self.winid = vim.api.nvim_tabpage_list_wins(0)[1]
+          return status.condition.buffer_matches(
+            { filetype = { "aerial", "dapui_.", "neo%-tree", "NvimTree" } },
+            vim.api.nvim_win_get_buf(self.winid)
+          )
+        end,
+        provider = function(self) return string.rep(" ", vim.api.nvim_win_get_width(self.winid) + 1) end,
+        hl = { bg = "tabline_bg" },
+      },
+      status.heirline.make_buflist(status.component.tabline_file_info()), -- component for each buffer tab
+      status.component.fill { hl = { bg = "tabline_bg" } }, -- fill the rest of the tabline with background color
+
+      { -- tab list
+        condition = function() return #vim.api.nvim_list_tabpages() >= 2 end, -- only show tabs if there are more than one
+        status.heirline.make_tablist { -- component for each tab
+          provider = status.provider.tabnr(),
+          hl = function(self) return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true) end,
+        },
+        { -- close button for current tab
+          provider = status.provider.close_button { kind = "TabClose", padding = { left = 1, right = 1 } },
+          hl = status.hl.get_attributes("tab_close", true),
+          on_click = {
+            callback = function() require("astronvim.utils.buffer").close_tab() end,
+            name = "heirline_tabline_close_tab_callback",
+          },
+        },
+      },
+    }
     --
     -- opts.statusline[1][3] = status.component.file_info {
     --   filename = { modify = ":~:." }, -- relative path
@@ -45,6 +77,9 @@ return {
     -- opts.statusline[3][1] = nil -- disable file type section
 
     opts.winbar = nil
+    -- opts.winbar = {
+    --   status.component.harpoon_index,
+    -- }
 
     opts.statusline = {
 
@@ -62,24 +97,18 @@ return {
           separator = "left",
           -- set the color of the surrounding based on the current mode using astronvim.utils.status module
           color = function() return { main = status.hl.mode_bg(), right = "file_info_bg" } end,
+          -- color = function() return { main = status.hl.mode_bg(), right = "blank_bg" } end,
         },
       },
-      -- we want an empty space here so we can use the component builder to make a new section with just an empty string
       -- status.component.builder {
       --   { provider = "" },
       --   -- define the surrounding separator and colors to be used inside of the component
       --   -- and the color to the right of the separated out section
-      --   surround = {
-      --     -- it's a left element, so use the left separator
-      --     separator = "left",
-      --     -- set the color of the surrounding based on the current mode using astronvim.utils.status module
-      --     color = function() return { main = status.hl.mode_bg(), right = "blank_bg" } end,
-      --   },
-      -- },
-      -- add a section for the currently opened file information
+      --   surround = { separator = "left", color = { main = "blank_bg", right = "file_info_bg" } },
+      -- }, -- add a section for the currently opened file information
       status.component.file_info {
         -- enable the file_icon and disable the highlighting based on filetype
-        -- file_icon = { padding = { left = 0 } },
+        file_icon = { padding = { left = 0 } },
         filename = { fallback = "Empty" },
         -- add padding
         padding = { right = 1 },
@@ -90,8 +119,13 @@ return {
       status.component.git_branch { surround = { separator = "none", color = "git_branch_bg" } },
       -- add a component for the current git diff if it exists and use no separator for the sections
       status.component.git_diff { padding = { left = 0 }, surround = { separator = "none", color = "git_branch_bg" } },
-      status.component.harpoon_index,
+      -- status.component.harpoon_index,
       status.component.venv,
+      -- status.component.breadcrumbs {
+      --   icon = { hl = true },
+      --   prefix = false,
+      --   padding = { left = 0 },
+      -- },
 
       -- fill the rest of the statusline
       -- the elements after this will appear in the middle of the statusline

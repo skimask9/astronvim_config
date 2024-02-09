@@ -4,21 +4,20 @@ return {
     -- set to true or false etc.
     relativenumber = true, -- sets vim.opt.relativenumber
     number = true, -- sets vim.opt.number
-    spell = false, -- sets vim.opt.spell
+    spell = true, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-    wrap = false, -- sets vim.opt.wrap
     linebreak = true, -- linebreak soft wrap at words
     list = true, -- show whitespace characters
-    -- listchars = {
-    --   tab = "|→",
-    --   extends = "⟩",
-    --   precedes = "⟨",
-    --   trail = "·",
-    --   nbsp = "␣",
-    --   eol = "↵",
-    -- },
-    -- showbreak = "↪ ",
-    -- wrap = true, -- sets vim.opt.wrap
+    listchars = {
+      tab = "|→",
+      extends = "⟩",
+      precedes = "⟨",
+      trail = "·",
+      nbsp = "␣",
+      eol = "↵",
+    },
+    showbreak = "↪ ",
+    wrap = true, -- sets vim.opt.wrap
     colorcolumn = "89",
     cmdheight = 0,
     rnu = true,
