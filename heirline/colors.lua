@@ -3,14 +3,14 @@ return function(hl)
   -- use helper function to get highlight group properties
   local comment_fg = get_hlgroup("Comment").bg
   hl.git_branch_fg = comment_fg
-  hl.git_branch_bg = get_hlgroup("Visual").bg
+  -- hl.git_branch_bg = get_hlgroup("Visual").bg
   -- TO HIDE BACKGROUND OF GIT
   -- hl.git_branch_bg = get_hlgroup("Normal").bg
   hl.lsp_fg = comment_fg
   -- TO HIDE BG OF LSP
   -- hl.lsp_bg = get_hlgroup("Normal").bg
   hl.git_added = get_hlgroup("String").fg
-  -- hl.git_changed =
+  -- hl.git_changed = get_hlgroup("String").fg
   hl.git_removed = get_hlgroup("Error").fg
   hl.blank_bg = get_hlgroup("Folded").fg
   hl.file_info_bg = get_hlgroup("Folded").bg

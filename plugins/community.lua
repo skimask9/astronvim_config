@@ -205,12 +205,12 @@ return {
     },
     cmd = { "Harpoon" },
     keys = {
-      { "<C-p>", function() require("harpoon.ui").nav_prev() end, desc = "Goto previous mark" },
-      { "<C-t>", function() require("harpoon.ui").nav_next() end, desc = "Goto next mark" },
-      { "<C-q>", function() require("harpoon.ui").nav_file(1) end, desc = "Nav file 1" },
-      { "<C-e>", function() require("harpoon.ui").nav_file(2) end, desc = "Nav file 2" },
-      -- { "<C-e>", function() require("harpoon.ui").nav_file(4) end, desc = "Nav file 4" },
-      { "<C-f>", function() require("harpoon.ui").nav_file(3) end, desc = "Nav file 3" },
+      { "<C-S-P>", function() require("harpoon"):list():prev() end, desc = "Goto previous mark" },
+      { "<C-S-T>", function() require("harpoon"):list():next() end, desc = "Goto next mark" },
+      { "<C-q>", function() require("harpoon"):list():select(1) end, desc = "Nav file 1" },
+      { "<C-e>", function() require("harpoon"):list():select(2) end, desc = "Nav file 2" },
+      { "<C-f>", function() require("harpoon"):list():select(3) end, desc = "Nav file 3" },
+      { "<C-t>", function() require("harpoon"):list():select(4) end, desc = "Nav file 4" },
     },
   },
 }

@@ -7,24 +7,25 @@ local actived_venv = function()
     return " select venv"
   end
 end
+
 return {
   "rebelot/heirline.nvim",
   opts = function(_, opts)
     local status = require "astronvim.utils.status"
-    status.component.harpoon_index = {
-      provider = function()
-        if not is_available "harpoon" then return end
-        local marked = require "harpoon.mark"
-        local filename = vim.api.nvim_buf_get_name(0)
-        local ok, index = pcall(marked.get_index_of, filename)
-        if ok and index and index > 0 then
-          return " 󱡀 " .. index
-        else
-          return
-        end
-      end,
-      hl = { fg = "git_branch_fg", bg = "bg" },
-    }
+    -- status.component.harpoon_index = {
+    --   provider = function()
+    --     if not is_available "harpoon" then return end
+    --     local marked = require "harpoon.mark"
+    --     local filename = vim.api.nvim_buf_get_name(0)
+    --     local ok, index = pcall(marked.get_index_of, filename)
+    --     if ok and index and index > 0 then
+    --       return " 󱡀 " .. index
+    --     else
+    --       return
+    --     end
+    --   end,
+    --   hl = { fg = "git_branch_fg", bg = "bg" },
+    -- }
     status.component.venv = {
       { provider = function() return " 🐍" .. actived_venv() end },
       on_click = {
@@ -38,7 +39,7 @@ return {
     }
 
     opts.tabline = { -- tabline
-      status.component.harpoon_index,
+      -- status.component.harpoon_index,
       { -- file tree padding
         condition = function(self)
           self.winid = vim.api.nvim_tabpage_list_wins(0)[1]

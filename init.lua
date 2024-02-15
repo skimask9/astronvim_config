@@ -25,7 +25,6 @@ return {
     virtual_text = true,
     underline = true,
   },
-
   lsp = {
     vim.filetype.add { extension = { templ = "templ" } },
     -- customize lsp formatting options
