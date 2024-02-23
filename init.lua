@@ -35,6 +35,9 @@ return {
       htmx = {
         filetypes = { "html", "templ", "htmldjango", "djlint" },
       },
+      -- tailwindcss = {
+      --   root_dir = lsp.util.root_pattern("tailwind.config.js", "package.json"),
+      -- },
       -- templ = {
       --   filetypes = { "html" },
       -- },

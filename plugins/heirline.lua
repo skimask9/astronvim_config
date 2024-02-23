@@ -2,9 +2,9 @@ local is_available = require("astronvim.utils").is_available
 local actived_venv = function()
   local venv_name = require("venv-selector").get_active_venv()
   if venv_name ~= nil then
-    return string.gsub(venv_name, " .*/.venv/ ", " (poetry) ")
+    return string.gsub(venv_name, " /.venv/ ", " (venv) ")
   else
-    return " select venv"
+    return " "
   end
 end
 
@@ -26,7 +26,16 @@ return {
     --   end,
     --   hl = { fg = "git_branch_fg", bg = "bg" },
     -- }
+    status.component.dap = {
+      condition = function()
+        local session = require("dap").session()
+        return session ~= nil
+      end,
+      provider = function() return "  " .. require("dap").status() end,
+      hl = "Debug",
+    }
     status.component.venv = {
+      condition = function() return vim.bo.filetype == "python" end,
       { provider = function() return " 🐍" .. actived_venv() end },
       on_click = {
         callback = function() vim.cmd.VenvSelect() end,
@@ -127,10 +136,8 @@ return {
       --   prefix = false,
       --   padding = { left = 0 },
       -- },
+      status.component.dap,
 
-      -- fill the rest of the statusline
-      -- the elements after this will appear in the middle of the statusline
-      status.component.fill(),
       -- status.component.cmd_info(),
       -- add a component to display if the LSP is loading, disable showing running client names, and use no separator
       -- status.component.lsp { lsp_client_names = false, surround = { separator = "none" } },
