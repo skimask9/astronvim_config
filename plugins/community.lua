@@ -5,11 +5,12 @@ return {
   -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
-  -- { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.catppuccin" },
   -- { import = "astrocommunity.colorscheme.neosolarized-nvim" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+  -- { import = "astrocommunity.colorscheme.everforest" },
   -- { import = "astrocommunity.colorscheme.nordic-nvim" },
-  -- { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
+  { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
   { import = "astrocommunity.editing-support.vim-move" },
   -- NOTE: nvim 0.10+
@@ -21,6 +22,7 @@ return {
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.go" },
+  { import = "astrocommunity.pack.templ" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
   { import = "astrocommunity.editing-support.telescope-undo-nvim" },
@@ -58,7 +60,7 @@ return {
   -- {
   --   "rebelot/kanagawa.nvim",
   --   opts = {
-  --     compile = false, -- enable compiling the colorscheme
+  --     compile = true, -- enable compiling the colorscheme
   --     undercurl = true, -- enable undercurls
   --     commentStyle = { italic = true },
   --     functionStyle = { italic = true },
@@ -77,6 +79,34 @@ return {
   --         },
   --       },
   --     },
+  --     overrides = function(colors)
+  --       local theme = colors.theme
+  --       return {
+  --         -- TablineFill = { bg = theme.ui.bg_p1 },
+  --         NormalFloat = { bg = "none" },
+  --         FloatBorder = { bg = "none" },
+  --         FloatTitle = { bg = "none" },
+  --         NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+  --         LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --         MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --         -- TabLineFill	Tab pages line, where there are no labels.
+  --         TabLineFill = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+  --         -- TabLineSel	Tab pages line, active tab page label.
+  --         -- Title		Titles for output from ":set all", ":autocmd" etc.
+  --         Title = { fg = theme.syn.fun, bold = true },
+  --         Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+  --         PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+  --         PmenuSbar = { bg = theme.ui.bg_m1 },
+  --         PmenuThumb = { bg = theme.ui.bg_p2 },
+  --         TelescopeTitle = { fg = theme.ui.special, bold = true },
+  --         TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+  --         TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+  --         TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+  --         TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+  --         TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+  --         TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+  --       }
+  --     end,
   --   },
   -- },
   -- {

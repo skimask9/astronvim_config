@@ -1,3 +1,9 @@
+local on_attach = function(client, bufnr)
+  if client.name == "ruff_lsp" then
+    -- Disable hover in favor of Pyright
+    client.server_capabilities.hoverProvider = false
+  end
+end
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -18,7 +24,10 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "solarized-osaka",
+  -- colorscheme = "solarized-osaka-night",
+  colorscheme = "everforest",
+  -- colorscheme = "catppuccin-mocha",
+  -- colorscheme = "kanagawa",
   -- colorscheme = "tokyonight-night",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -26,7 +35,7 @@ return {
     underline = true,
   },
   lsp = {
-    vim.filetype.add { extension = { templ = "templ" } },
+    -- vim.filetype.add { extension = { templ = "templ" } },
     -- customize lsp formatting options
     -- features = {
     --   inlay_hints = true,
@@ -37,10 +46,30 @@ return {
       },
       gopls = {
         templateExtensions = { "templ", "tmpl" },
+        -- hints = {
+        --   assignVariableTypes = true,
+        --   compositeLiteralFields = true,
+        --   compositeLiteralTypes = true,
+        --   constantValues = true,
+        --   functionTypeParameters = true,
+        --   parameterNames = true,
+        --   rangeVariableTypes = true,
+        -- },
       },
-      -- tailwindcss = {
-      --   root_dir = lsp.util.root_pattern("tailwind.config.js", "package.json"),
-      -- },
+      pyright = {
+        -- Using Ruff's import organizer
+        disableOrganizeImports = true,
+      },
+      ruff_lsp = {
+        on_attach = on_attach,
+      },
+      tailwindcss = {
+        -- root_dir = lsp.util.root_pattern("tailwind.config.js", "package.json"),
+        userLanguages = {
+          htmldjango = "html",
+          templ = "html",
+        },
+      },
       -- templ = {
       --   filetypes = { "html" },
       -- },
@@ -105,5 +134,24 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+    --
+    vim.api.nvim_create_autocmd("VimEnter", {
+      desc = "Auto select virtualenv Nvim open",
+      pattern = "*",
+      callback = function()
+        local venv = vim.fn.findfile("pyproject.toml", vim.fn.getcwd() .. ";")
+        if venv ~= "" then require("venv-selector").retrieve_from_cache() end
+      end,
+      once = true,
+    })
+    vim.api.nvim_create_autocmd("VimEnter", {
+      desc = "Auto select virtualenv Nvim open",
+      pattern = "*",
+      callback = function()
+        local current_filetype = vim.bo.filetype
+        if current_filetype == "py" then require("venv-selector").retrieve_from_cache() end
+      end,
+      once = true,
+    })
   end,
 }

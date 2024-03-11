@@ -29,41 +29,41 @@ return {
         colors.hint = colors.orange
         colors.error = "#ff0000"
       end,
-      on_highlights = function(hl, c)
-        -- local prompt = "#2d3149"
-        local prompt = "#002d38"
-        hl.TabLineFill = {
-          bg = c.base03,
-          fg = c.fg,
-        }
-        hl.TelescopeNormal = {
-          bg = c.bg,
-          fg = c.fg,
-        }
-        hl.TelescopeBorder = {
-          bg = c.bg,
-          fg = c.bg,
-        }
-        hl.TelescopePromptNormal = {
-          bg = prompt,
-        }
-        hl.TelescopePromptBorder = {
-          bg = prompt,
-          fg = prompt,
-        }
-        hl.TelescopePromptTitle = {
-          bg = prompt,
-          fg = prompt,
-        }
-        hl.TelescopePreviewTitle = {
-          bg = c.bg,
-          fg = c.bg,
-        }
-        hl.TelescopeResultsTitle = {
-          bg = c.bg,
-          fg = c.bg,
-        }
-      end,
+      --     on_highlights = function(hl, c)
+      --       -- local prompt = "#2d3149"
+      --       local prompt = "#002d38"
+      --       hl.TabLineFill = {
+      --         bg = c.base03,
+      --         fg = c.fg,
+      --       }
+      --       hl.TelescopeNormal = {
+      --         bg = c.bg,
+      --         fg = c.fg,
+      --       }
+      --       hl.TelescopeBorder = {
+      --         bg = c.bg,
+      --         fg = c.bg,
+      --       }
+      --       hl.TelescopePromptNormal = {
+      --         bg = prompt,
+      --       }
+      --       hl.TelescopePromptBorder = {
+      --         bg = prompt,
+      --         fg = prompt,
+      --       }
+      --       hl.TelescopePromptTitle = {
+      --         bg = prompt,
+      --         fg = prompt,
+      --       }
+      --       hl.TelescopePreviewTitle = {
+      --         bg = c.bg,
+      --         fg = c.bg,
+      --       }
+      --       hl.TelescopeResultsTitle = {
+      --         bg = c.bg,
+      --         fg = c.bg,
+      --       }
+      --     end,
     }
   end,
 }

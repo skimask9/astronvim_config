@@ -27,6 +27,7 @@ return {
       end,
       desc = "Pick to close",
     },
+    ["<leader>i"] = { function() require("lspimport").import() end, desc = "Import" },
     ["<F1>"] = { ":w|!python3  %<cr>", desc = "Run python file" },
     ["<F3>"] = { ":w|!go run %<cr>", desc = "Run go file" },
     ["<TAB>"] = { "<cmd>:Telescope buffers<cr>", desc = "buffers" },
