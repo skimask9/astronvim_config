@@ -7,6 +7,9 @@ local actived_venv = function()
     return " "
   end
 end
+local harpoonline = require("harpoonline").setup {
+  on_update = function() vim.cmd.redrawstatus() end,
+}
 
 return {
   "rebelot/heirline.nvim",
@@ -26,6 +29,15 @@ return {
     --   end,
     --   hl = { fg = "git_branch_fg", bg = "bg" },
     -- }
+    status.component.harpoonline = {
+      provider = function()
+        if not is_available "harpoon" then return end
+        local line = harpoonline.format()
+        if line == "" then return " " end
+        return status.utils.stylize(line, { padding = { left = 1 } })
+      end,
+      hl = { fg = "git_changed" },
+    }
     status.component.dap = {
       condition = function()
         local session = require("dap").session()
@@ -86,10 +98,31 @@ return {
     --
     -- opts.statusline[3][1] = nil -- disable file type section
 
-    opts.winbar = nil
-    -- opts.winbar = {
-    --   status.component.harpoon_index,
-    -- }
+    -- opts.winbar = nil
+    -- -- opts.winbar = {
+    -- --   status.component.harpoon_index,
+    -- -- }
+    -- opts.statusline[3] = status.component.file_info { filetype = false, filename = { modify = ":." } }
+    -- opts.tabline = nil -- disable tabline
+    -- opts.winbar = status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } }
+    opts.winbar = {
+      status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } },
+      status.component.file_info { -- add file_info to breadcrumbs
+        file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },
+        file_modified = false,
+        file_read_only = false,
+        hl = status.hl.get_attributes("winbar", true),
+        surround = false,
+        update = "BufEnter",
+      },
+      -- status.component.breadcrumbs {
+      --   icon = { hl = true },
+      --   hl = status.hl.get_attributes("winbar", true),
+      --   prefix = true,
+      --   padding = { left = 0 },
+      -- },
+      status.component.harpoonline,
+    }
 
     opts.statusline = {
 
@@ -130,6 +163,7 @@ return {
       -- add a component for the current git diff if it exists and use no separator for the sections
       status.component.git_diff { padding = { left = 0 }, surround = { separator = "none", color = "git_branch_bg" } },
       -- status.component.harpoon_index,
+      -- status.component.harpoonline,
       status.component.venv,
       -- status.component.breadcrumbs {
       --   icon = { hl = true },

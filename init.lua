@@ -59,12 +59,26 @@ return {
       pyright = {
         -- Using Ruff's import organizer
         disableOrganizeImports = true,
+        -- settings = {
+        --   python = {
+        --     analysis = {
+        --       typeCheckingMode = "off",
+        --     },
+        --   },
+        -- },
       },
       ruff_lsp = {
         on_attach = on_attach,
       },
       tailwindcss = {
-        -- root_dir = lsp.util.root_pattern("tailwind.config.js", "package.json"),
+        root_dir = function(fname)
+          local util = require "lspconfig.util"
+          return util.root_pattern("tailwind.config.js", "tailwind.config.ts", "./theme/static_src/tailwind.config.js")(
+            fname
+          ) or util.root_pattern("postcss.config.js", "postcss.config.ts")(fname) or util.find_package_json_ancestor(
+            fname
+          ) or util.find_node_modules_ancestor(fname) or util.find_git_ancestor(fname)
+        end,
         userLanguages = {
           htmldjango = "html",
           templ = "html",
@@ -141,6 +155,15 @@ return {
       callback = function()
         local venv = vim.fn.findfile("pyproject.toml", vim.fn.getcwd() .. ";")
         if venv ~= "" then require("venv-selector").retrieve_from_cache() end
+      end,
+      once = true,
+    })
+    vim.api.nvim_create_autocmd("VimEnter", {
+      desc = "Auto select virtualenv Nvim open",
+      pattern = "*",
+      callback = function()
+        local venv_folder = vim.fn.getcwd() .. "/.venv"
+        if vim.fn.isdirectory(venv_folder) == 1 then require("venv-selector").retrieve_from_cache() end
       end,
       once = true,
     })

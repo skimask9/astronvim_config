@@ -233,10 +233,8 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
     },
-    cmd = { "Harpoon" },
+    event = "User AstroFile",
     keys = {
-      { "<C-S-P>", function() require("harpoon"):list():prev() end, desc = "Goto previous mark" },
-      { "<C-S-T>", function() require("harpoon"):list():next() end, desc = "Goto next mark" },
       { "<C-q>", function() require("harpoon"):list():select(1) end, desc = "Nav file 1" },
       { "<C-e>", function() require("harpoon"):list():select(2) end, desc = "Nav file 2" },
       { "<C-f>", function() require("harpoon"):list():select(3) end, desc = "Nav file 3" },
