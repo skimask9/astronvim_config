@@ -1,6 +1,7 @@
 return {
   -- Add the community repository of plugin specifications
-  "AstroNvim/astrocommunity",
+  "Astronvim/astrocommunity",
+  version = "^6",
   -- example of importing a plugin, comment out to use it or add your own
   -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
@@ -34,9 +35,10 @@ return {
   { import = "astrocommunity.motion.harpoon" },
   { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.color.tint-nvim" },
-  { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
   { import = "astrocommunity.utility.noice-nvim" },
+  { import = "astrocommunity.indent.indent-blankline-nvim" },
+  { import = "astrocommunity.indent.mini-indentscope" },
   -- {
   --   "catppuccin/nvim",
   --   priority = 1000,

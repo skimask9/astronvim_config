@@ -1,9 +1,3 @@
-local on_attach = function(client, bufnr)
-  if client.name == "ruff_lsp" then
-    -- Disable hover in favor of Pyright
-    client.server_capabilities.hoverProvider = false
-  end
-end
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -58,6 +52,7 @@ return {
       },
       pyright = {
         -- Using Ruff's import organizer
+        -- enabled = false,
         disableOrganizeImports = true,
         -- settings = {
         --   python = {
@@ -67,8 +62,21 @@ return {
         --   },
         -- },
       },
+      -- basedpyright = {
+      --   analysis = {
+      --     autoSearchPaths = true,
+      --     diagnosticMode = "openFilesOnly",
+      --     useLibraryCodeForTypes = true,
+      --   },
+      -- },
       ruff_lsp = {
-        on_attach = on_attach,
+        -- on_attach = on_attach,
+        on_attach = function(client, bufnr)
+          if client.name == "ruff_lsp" then
+            -- Disable hover in favor of Pyright
+            client.server_capabilities.hoverProvider = false
+          end
+        end,
       },
       tailwindcss = {
         root_dir = function(fname)

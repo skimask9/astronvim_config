@@ -7,7 +7,9 @@ local actived_venv = function()
     return " "
   end
 end
-local harpoonline = require("harpoonline").setup {
+local harpoonline = require "harpoonline"
+harpoonline.setup {
+
   on_update = function() vim.cmd.redrawstatus() end,
 }
 
@@ -31,12 +33,20 @@ return {
     -- }
     status.component.harpoonline = {
       provider = function()
-        if not is_available "harpoon" then return end
-        local line = harpoonline.format()
-        if line == "" then return " " end
-        return status.utils.stylize(line, { padding = { left = 1 } })
+        --   if not is_available "harpoon" then return end
+        --   local line = harpoonline.format()
+        --   if line == "" then return " " end
+        --   return status.utils.stylize(line, { padding = { left = 1 } })
+        -- end,
+        if harpoonline.is_buffer_harpooned() then
+          return " " .. harpoonline.format() .. " "
+        else
+          return " "
+        end
       end,
-      hl = { fg = "git_changed" },
+      hl = function()
+        if harpoonline.is_buffer_harpooned() then return { fg = "git_changed" } end
+      end,
     }
     status.component.dap = {
       condition = function()
@@ -106,21 +116,21 @@ return {
     -- opts.tabline = nil -- disable tabline
     -- opts.winbar = status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } }
     opts.winbar = {
-      status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } },
-      status.component.file_info { -- add file_info to breadcrumbs
-        file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },
-        file_modified = false,
-        file_read_only = false,
-        hl = status.hl.get_attributes("winbar", true),
-        surround = false,
-        update = "BufEnter",
-      },
-      -- status.component.breadcrumbs {
-      --   icon = { hl = true },
+      -- status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } },
+      -- status.component.file_info { -- add file_info to breadcrumbs
+      --   file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },
+      --   file_modified = false,
+      --   file_read_only = false,
       --   hl = status.hl.get_attributes("winbar", true),
-      --   prefix = true,
-      --   padding = { left = 0 },
+      --   surround = false,
+      --   update = "BufEnter",
       -- },
+      status.component.breadcrumbs {
+        icon = { hl = true },
+        hl = status.hl.get_attributes("winbar", true),
+        prefix = true,
+        padding = { left = 0 },
+      },
       status.component.harpoonline,
     }
 
@@ -152,7 +162,9 @@ return {
       status.component.file_info {
         -- enable the file_icon and disable the highlighting based on filetype
         file_icon = { padding = { left = 0 } },
-        filename = { fallback = "Empty" },
+        filename = { --[[ fallback = "Empty" ]]
+          modify = ":.",
+        },
         -- add padding
         padding = { right = 1 },
         -- define the section separator

@@ -29,6 +29,7 @@ return {
     -- guicursor = "",
     -- inlay_hints_enabled = true,
     -- showmode = true,
+    -- showtabline = 0,
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
